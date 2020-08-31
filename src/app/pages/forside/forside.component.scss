@@ -1,0 +1,10 @@
+section.container {
+  display: grid;
+  grid-template-columns: 1fr 60%;
+    section.left {
+      background-color: #bd3fa3;
+    }
+    section.right {
+      background-color: #520a43;
+    }
+}
