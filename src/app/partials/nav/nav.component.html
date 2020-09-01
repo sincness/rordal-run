@@ -1,21 +1,34 @@
-<nav #toolbar id="toolbar">
-  <span (click)="menuOpen = !menuOpen; menu()" #icon class="material-icons">menu</span>
+<section #toolbar id="toolbar">
+  <span (click)="menuOpen = !menuOpen; menu()" class="material-icons">menu</span>
   <figure>
       <img routerLink="/" src="../../../assets/svg/logo.svg" alt="Logo">
   </figure>
-  <ul>
-      <li><a routerLink="/">Forside</a></li>
-      <li><a routerLink="/samling">Samling</a></li>
-      <!-- <li *ngIf="!online"><a routerLink="/login">Log ind</a></li>
-      <li *ngIf="online"><a (click)="logout()">Log ud</a></li> -->
-  </ul>
-</nav>
-<nav #sideToolbar id="side-toolbar">
-  <ul>
-      <li><a routerLink="/" (click)="close()">Forside</a></li>
-      <li><a routerLink="/samling" (click)="close()">Samling</a></li>
-      <!-- <li *ngIf="!online"><a routerLink="/login" (click)="close()">Log ind</a></li>
-      <li *ngIf="online"><a routerLink="/min-side" (click)="close()">Min side</a></li>
-      <li *ngIf="online"><a (click)="logout();close()">Log ud</a></li> -->
-  </ul>
-</nav>
+</section>
+<aside>
+  <nav #sideToolbar id="side-toolbar">
+    <ul>
+      <li>
+        <span (click)="menuOpen = !menuOpen; menu()" class="material-icons">close</span>
+      </li>
+        <li><a routerLink="/om" (click)="close()">OM RØRDAL RUN</a></li>
+        <li><a routerLink="/tilmelding" (click)="close()">TILMELDING</a></li>
+        <li><a routerLink="/distancer" (click)="close()">DISTANCER</a></li>
+        <li>
+            <details>
+              <summary>
+                  LOG IND
+              </summary>
+              <form method="POST">
+                  <input type="text" />
+                  <input type="text" />
+                  <button>Log ind</button>
+              </form>
+          </details>
+        </li>
+        <li><a routerLink="/deltagerliste" (click)="close()">DELTAGERLISTE</a></li>
+        <!-- <li *ngIf="!online"><a routerLink="/login" (click)="close()">Log ind</a></li>
+        <li *ngIf="online"><a routerLink="/min-side" (click)="close()">Min side</a></li>
+        <li *ngIf="online"><a (click)="logout();close()">Log ud</a></li> -->
+    </ul>
+  </nav>
+</aside>

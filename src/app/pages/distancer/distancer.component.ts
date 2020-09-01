@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpService } from 'src/app/services/http.service';
 
 @Component({
   selector: 'app-distancer',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DistancerComponent implements OnInit {
 
-  constructor() { }
+  constructor(public http: HttpService) { }
 
   ngOnInit(): void {
   }

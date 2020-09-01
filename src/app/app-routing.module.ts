@@ -6,14 +6,17 @@ import { TilmeldingComponent } from './pages/tilmelding/tilmelding.component';
 import { TakComponent } from './pages/tak/tak.component';
 import { DeltagerlisteComponent } from './pages/deltagerliste/deltagerliste.component';
 import { FejlComponent } from './pages/fejl/fejl.component';
+import { OmComponent } from './pages/om/om.component';
 
 
 const routes: Routes = [
   { path: '', redirectTo: '/forside', pathMatch: 'full' },
   { path: 'forside', component: ForsideComponent },
   { path: 'distancer', component: DistancerComponent },
+  { path: 'tilmelding', component: TilmeldingComponent },
   { path: 'tilmelding/:id', component: TilmeldingComponent },
   { path: 'tak', component: TakComponent },
+  { path: 'om', component: OmComponent },
   { path: 'deltagerliste', component: DeltagerlisteComponent },
   { path: '**', component: FejlComponent }
 ];

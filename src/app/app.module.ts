@@ -12,6 +12,7 @@ import { TilmeldingComponent } from './pages/tilmelding/tilmelding.component';
 import { TakComponent } from './pages/tak/tak.component';
 import { DeltagerlisteComponent } from './pages/deltagerliste/deltagerliste.component';
 import { FejlComponent } from './pages/fejl/fejl.component';
+import { OmComponent } from './pages/om/om.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { FejlComponent } from './pages/fejl/fejl.component';
     TilmeldingComponent,
     TakComponent,
     DeltagerlisteComponent,
-    FejlComponent
+    FejlComponent,
+    OmComponent
   ],
   imports: [
     BrowserModule,

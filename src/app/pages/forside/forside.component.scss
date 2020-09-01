@@ -1,10 +1,33 @@
+figure {
+  img#headerimg {
+    object-position: top;
+  }
+}
+
 section.container {
   display: grid;
   grid-template-columns: 1fr 60%;
+  width: 90%;
+  margin: 0 auto;
+  gap: 1rem;
     section.left {
-      background-color: #bd3fa3;
+      // background-color: #bd3fa3;
+      section.content {
+        
+        h1 {
+          font-size: 3.6rem;
+        }
+        section {
+
+          p {
+            padding-bottom: 1rem;
+            
+          }
+        }
+
+      }
     }
     section.right {
-      background-color: #520a43;
+      // background-color: #520a43;
     }
 }

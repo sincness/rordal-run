@@ -24,15 +24,15 @@ export class NavComponent implements OnInit {
   }
 
   open() {
-    this.toolbar.nativeElement.style.marginLeft = '250px';
-    this.sideToolbar.nativeElement.style.width = '250px';
-    this.icon.nativeElement.textContent = 'menu_open';
+    // this.toolbar.nativeElement.style.marginLeft = '250px';
+    this.sideToolbar.nativeElement.style.width = '15%';
+    // this.icon.nativeElement.textContent = 'menu_open';
   }
 
   close() {
-    this.toolbar.nativeElement.style.marginLeft = '0';
+    // this.toolbar.nativeElement.style.marginLeft = '0';
     this.sideToolbar.nativeElement.style.width = '0';
-    this.icon.nativeElement.textContent = 'menu';
+    // this.icon.nativeElement.textContent = 'menu';
   }
 
   logout() {

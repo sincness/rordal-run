@@ -1,1 +1,4 @@
-<p>distancer works!</p>
+<section *ngIf="http.distancer | async as data">
+    <h1>{{data.title}}</h1>
+    <section [innerHTML]="data.content"></section>
+</section>

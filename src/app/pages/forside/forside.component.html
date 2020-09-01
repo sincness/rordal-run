@@ -1,5 +1,25 @@
-<section class="container">
-  <section class="left">hej</section>
-  <section class="right">mojn</section>
+<figure>
+  <img id="headerimg" src="../../../assets/img/header.jpg" alt="">
+</figure>
+<section  class="container">
+  <section class="left">
+    <section class="content" *ngIf="http.forside | async as data">
+      <h1>{{data.title}}</h1>
+      <section [innerHTML]="data.content"></section>
+    </section>
+
+  </section>
+  <section class="right">
+    <section *ngIf="http.runs | async as runs">
+      <article *ngFor="let run of runs">
+        <h2>{{run.title}}</h2>
+        <p>{{run.description}}</p>
+        <button type="button">TILMELD {{run.title}}</button>
+      </article>
+
+    </section>
+
+
+  </section>
 
 </section>

@@ -1,1 +1,53 @@
-<p>tilmelding works!</p>
+<section *ngIf="http.tilmelding | async as data">
+    <h1>{{data.title}}</h1>
+    <h2>{{data.teaser}}</h2>
+    <!-- <section [innerHTML]="data.content"></section> -->
+</section>
+
+
+<form method="POST">
+    <label for="name">Navn</label>
+    <input type="text" name="name">
+    <label for="lastname">Efternavn</label>
+    <input type="text" name="lastname">
+    <label for="day">Fødselsdato</label>
+    <select name="day">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">2</option>
+    </select>
+    <select name="month">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">2</option>
+    </select>
+    <select name="year">
+        <option value="1998">1998</option>
+        <option value="2">1999</option>
+        <option value="3">2000</option>
+    </select>
+    <label for="gender">Køn</label>
+    <input type="radio" id="male" name="gender" value="male">
+    <label for="male">Mand</label><br>
+    <input type="radio" id="female" name="gender" value="female">
+    <label for="female">Kvinde</label><br>
+    <label for="email">E-mail</label>
+    <input type="email" name="email">
+    <label for="address">Adresse</label>
+    <input type="text" name="address">
+    <label for="postnumber">Postnummer</label>
+    <input type="text" name="postnumber">
+    <label for="city">By</label>
+    <input type="text" name="city">
+    <label for="phone">Telefon</label>
+    <input type="text" name="phone">
+    <label for="lastname">Efternavn</label>
+    <select name="program">
+        <option value="1">One Mile</option>
+        <option value="2">5 km</option>
+        <option value="3">10 km</option>
+    </select>
+    <label for="comment">Kommentar</label>
+    <textarea name="comment"></textarea>
+    <button type="button">TILMELD</button>
+</form>
