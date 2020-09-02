@@ -1,1 +1,37 @@
-<p>deltagerliste works!</p>
+<figure>
+    <img id="headerimg" src="../../../assets/img/COLOURBOX7080728.jpg" alt="Header billede">
+  </figure>
+  <section  class="wrapper">
+    <span class="breadcrumb"><a routerLink="/">FORSIDE</a> > DELTAGERLISTE</span>
+      <section class="content" *ngIf="http.deltagerliste | async as data">
+        <h1>{{data.title}}</h1>
+        <section [innerHTML]="data.content"></section>
+      </section>
+      <form class="search" [formGroup]="participants">
+        <input formControlName="keyword" type="text">
+        <button [disabled]="!participants.valid" (click)="search()">Søg</button>
+      </form>
+      <section class="sort">
+        <button (click)="sortId()">Sorter ud fra id</button>
+        <button (click)="sortNames()">Sorter ud fra navne</button>
+        <button (click)="sortCities()">Sorter ud fra byer</button>
+        <!-- <button (click)="reverse()">Vend rækkefølgen om</button> -->
+      </section>
+      <section class="registrations" *ngIf="http.registrations">
+        <article *ngFor="let item of list">
+          <h2>{{item.firstname}} {{item.lastname}}, {{item.id}}</h2>
+          <p>{{item.address}}, {{item.city}} {{item.zipcode}}</p>
+          <p>{{item.phone}} {{item.email}}</p>
+        </article>
+      </section>
+      <!-- <section class="registrations" *ngIf="http.registrations | async as registrations">
+        <article *ngFor="let item of registrations">
+          <h2>{{item.firstname}} {{item.lastname}}</h2>
+          <p>{{item.city}}</p>
+        </article>
+      </section> -->
+      
+  
+  
+  </section>
+  

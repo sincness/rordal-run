@@ -1,0 +1,82 @@
+figure {
+    img#headerimg {
+      object-position: center;
+    }
+}
+section.main-wrapper {
+    display: grid;
+    width: 90%;
+    margin: 0 auto;
+    gap: 2rem;
+    h1 {
+        font-size: 3.5rem;
+    }
+    section {
+
+        section.distances {
+            max-width: 40rem;
+        }
+    }
+
+    article{
+        // background-color: red;
+        ul {
+            display: flex;
+            gap: 1rem;
+
+            li {
+                button {
+                    margin-bottom: 1rem;
+                    &.red{
+                        background-color: #cb2525;
+                    }
+                    &.green {
+                        background-color: #33cb25;
+                        
+                    }
+                }
+            }
+        }
+
+        section.context {
+            article {
+                
+                p {
+                    max-width: 40rem;
+                }
+                section {
+                    display: flex;
+                    div.ratings-container {
+                        display: flex;
+                        flex-direction: column;
+                        margin-left: 1rem;
+                        article {
+                            border-radius: 3px;
+                            padding: 1rem;
+                            &:nth-child(odd) {
+                              background: #fafafa90;
+                            }
+                            &:nth-child(even) {
+                              background: #2447bc5b;
+                            }
+                            p {
+                                display: flex;
+                                align-items: center;
+                                span {
+                                    cursor: pointer;
+                                    font-size: 1.2rem;
+                                    display: inline-block;
+                                    color: #cb2525;
+                                    // display: inline-block;
+                                }
+                            }
+
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+
+}

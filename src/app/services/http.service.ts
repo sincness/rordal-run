@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map, shareReplay, catchError, share } from 'rxjs/operators';
 import { of, Observable } from 'rxjs';
+import { CookieService } from './cookie.service';
 
 interface Response {
   status: boolean;
@@ -28,10 +29,11 @@ export class HttpService {
   private tilmeldingCache$;
   private distancerCache$;
   private deltagerlisteCache$;
+  private registrationsCache$;
   private omCache$;
   private løbCache$;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private cookie: CookieService) {
     // this.getPages();
   }
 
@@ -41,7 +43,7 @@ export class HttpService {
     );
   }
   getRun(id) {
-    return this.http.get(`https://api.mediehuset.net/rordal/run/${id}`);
+    return this.http.get<any>(`https://api.mediehuset.net/rordal/run/${id}`);
   }
   // getPage(id) {
   //   return this.http.get(`https://api.mediehuset.net/rordal/pages/${id}`);
@@ -78,6 +80,12 @@ export class HttpService {
     return this.distancerCache$;
   }
 
+  get registrations() {
+    if (!this.registrationsCache$) {
+      this.registrationsCache$ = this.getRegistrations().pipe(shareReplay(CACHE_SIZE));
+    }
+    return this.registrationsCache$;
+  }
   get runs() {
     if (!this.løbCache$) {
       this.løbCache$ = this.getRuns().pipe(shareReplay(CACHE_SIZE));
@@ -130,7 +138,9 @@ export class HttpService {
 
 
   getRegistrations() {
-    return this.http.get('https://api.mediehuset.net/rordal/registrations');
+    return this.http.get<any>('https://api.mediehuset.net/rordal/registrations').pipe(
+      map(response => response.items)
+    )
   }
   getRegistration(id) {
     return this.http.get(`https://api.mediehuset.net/rordal/registrations/${id}`);
@@ -142,7 +152,7 @@ export class HttpService {
     return this.http.delete(`https://api.mediehuset.net/rordal/registrations/${id}`)
   }
   getRatings(id) {
-    return this.http.get(`https://api.mediehuset.net/rordal/ratings/list/${id}`)
+    return this.http.get<any>(`https://api.mediehuset.net/rordal/ratings/list/${id}`)
   }
   getRating(id) {
     return this.http.get(`https://api.mediehuset.net/rordal/ratings/${id}`)
@@ -151,12 +161,16 @@ export class HttpService {
     return this.http.get(`https://api.mediehuset.net/rordal/ratings/average/${id}`)
   }
   postRating(data) {
-    return this.http.post(`https://api.mediehuset.net/rordal/ratings`, data)
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${this.cookie.get('token')}`);
+    return this.http.post(`https://api.mediehuset.net/rordal/ratings`, data, {headers})
   }
   deleteRating(id) {
-    return this.http.delete(`https://api.mediehuset.net/rordal/ratings/${id}`)
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${this.cookie.get('token')}`);
+    return this.http.delete(`https://api.mediehuset.net/rordal/ratings/${id}`, {headers})
   }
   search(keyword) {
-    this.http.get(`https://api.mediehuset.net/rordal/search/${keyword}`)
+    return this.http.get<any>(`https://api.mediehuset.net/rordal/search/${keyword}`).pipe(
+      map(response => response.items)
+    )
   }
 }

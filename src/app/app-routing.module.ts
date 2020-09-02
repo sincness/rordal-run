@@ -7,6 +7,7 @@ import { TakComponent } from './pages/tak/tak.component';
 import { DeltagerlisteComponent } from './pages/deltagerliste/deltagerliste.component';
 import { FejlComponent } from './pages/fejl/fejl.component';
 import { OmComponent } from './pages/om/om.component';
+import { BuyGuard } from './guards/buy.guard';
 
 
 const routes: Routes = [
@@ -14,8 +15,8 @@ const routes: Routes = [
   { path: 'forside', component: ForsideComponent },
   { path: 'distancer', component: DistancerComponent },
   { path: 'tilmelding', component: TilmeldingComponent },
+  { path: 'tilmelding/tak', component: TakComponent, canActivate: [BuyGuard] },
   { path: 'tilmelding/:id', component: TilmeldingComponent },
-  { path: 'tak', component: TakComponent },
   { path: 'om', component: OmComponent },
   { path: 'deltagerliste', component: DeltagerlisteComponent },
   { path: '**', component: FejlComponent }

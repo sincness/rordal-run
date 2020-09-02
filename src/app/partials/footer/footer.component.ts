@@ -12,4 +12,8 @@ export class FooterComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  toTheInfiniteTop() { 
+    window.scroll(0,0);
+  }
+
 }

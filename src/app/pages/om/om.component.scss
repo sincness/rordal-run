@@ -2,8 +2,18 @@ summary::-webkit-details-marker {
     display: none;
 }
 
-// summary:before {
-//     content: "\25B8"; /* the new icon */
-//     color: #2448bc;
-//     margin-right: 5px;
-// }
+article.wrapper {
+    padding: 1rem 5%;
+    
+    section.content {
+        padding-top: 1rem;
+
+        section {
+            p {
+                &:nth-child(3), &:nth-child(6) {
+                    padding-bottom: 1rem;
+                }
+            }
+        }
+    }
+}

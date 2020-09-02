@@ -1,53 +1,142 @@
-<section *ngIf="http.tilmelding | async as data">
-    <h1>{{data.title}}</h1>
-    <h2>{{data.teaser}}</h2>
-    <!-- <section [innerHTML]="data.content"></section> -->
+<figure>
+    <img id="headerimg" src="../../../assets/img/COLOURBOX12231828.jpg" alt="">
+</figure>
+<section class="wrapper">
+
+    <span class="breadcrumb"><a routerLink="/">FORSIDE</a> > TILMELDING </span>
+    <section class="signup" *ngIf="http.tilmelding | async as data">
+        <h1>{{data.title}}</h1>
+        <h2>{{data.teaser}}</h2>
+    </section>
+    
+    
+    <form class="order" [formGroup]="signup">
+        <section>
+            <div class="input-container">
+                <label for="firstname">Navn <span *ngIf="f.firstname.invalid" class="red">*</span><span class="check" *ngIf="f.firstname.valid && !f.firstname.invalid"><i class="fas fa-check"></i></span></label>
+                <input type="text" formControlName="firstname" name="firstname">
+            </div>
+            <div class="input-container">
+    
+                <label for="lastname">Efternavn <span *ngIf="f.lastname.invalid" class="red">*</span><span class="check" *ngIf="f.lastname.valid && !f.lastname.invalid"><i class="fas fa-check"></i></span></label>
+                <input type="text" formControlName="lastname" name="lastname">
+            </div>
+            <div class="input-container">
+                <label>Fødselsdato <span *ngIf="f.birthyear.invalid || f.birthday.invalid || f.birthmonth.invalid" class="red">*</span><span class="check" *ngIf="f.birthyear.valid && !f.birthyear.invalid && f.birthmonth.valid && !f.birthmonth.invalid && f.birthday.valid && !f.birthday.invalid"><i class="fas fa-check"></i></span></label>
+                <div class="select-container">
+                    <select formControlName="birthday" name="day">
+                        <option selected disabled hidden value="">Dag</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                        <option value="13">13</option>
+                        <option value="14">14</option>
+                        <option value="15">15</option>
+                        <option value="16">16</option>
+                        <option value="17">17</option>
+                        <option value="18">18</option>
+                        <option value="19">19</option>
+                        <option value="20">20</option>
+                        <option value="21">21</option>
+                        <option value="22">22</option>
+                        <option value="23">23</option>
+                        <option value="24">24</option>
+                        <option value="25">25</option>
+                        <option value="26">26</option>
+                        <option value="27">27</option>
+                        <option value="28">28</option>
+                        <option value="29">29</option>
+                        <option value="30">30</option>
+                        <option value="31">31</option>
+                    </select>
+                        
+                    <select formControlName="birthmonth" name="month">
+                        <option selected disabled hidden value="">Måned</option>
+                        <option value="1">Januar</option>
+                        <option value="2">Februar</option>
+                        <option value="3">Marts</option>
+                        <option value="4">April</option>
+                        <option value="5">Maj</option>
+                        <option value="6">Juni</option>
+                        <option value="7">Juli</option>
+                        <option value="8">August</option>
+                        <option value="9">September</option>
+                        <option value="10">Oktober</option>
+                        <option value="11">November</option>
+                        <option value="12">December</option>
+
+                    </select>
+
+                    <select formControlName="birthyear" name="year">
+                        <option selected disabled hidden value="">År</option>
+                        <option *ngFor="let item of arrayOf(80); let i = index" [value]="1940 + i">{{1940 + i}}</option>
+                    </select>
+                    
+                </div>
+    
+            </div>
+            <div class="input-container">
+                <label for="gender">Køn <span *ngIf="f.gender.invalid" class="red">*</span><span class="check" *ngIf="f.gender.valid && !f.gender.invalid"><i class="fas fa-check"></i></span></label>
+                
+                <div class="radio-container">
+                        <input type="radio" id="male" name="gender" value="m" formControlName="gender" >
+                        <label for="male">Mand</label>
+                    <input type="radio" id="female" name="gender" value="f" formControlName="gender" >
+                    <label for="female">Kvinde</label>
+                </div>
+            </div>
+            <div class="input-container">
+                <label for="email">E-mail <span *ngIf="f.email.invalid" class="red">*</span><span class="check" *ngIf="f.email.valid && !f.email.invalid"><i class="fas fa-check"></i></span></label>
+                <input type="email" formControlName="email" name="email">
+            </div>
+        </section>
+        <section>
+            <div class="input-container">
+    
+                <label for="address">Adresse <span *ngIf="f.address.invalid" class="red">*</span><span class="check" *ngIf="f.address.valid && !f.address.invalid"><i class="fas fa-check"></i></span></label>
+                <input type="text" formControlName="address" name="address">
+            </div>
+            <div class="input-container">
+                
+                <label for="zipcode">Postnummer <span *ngIf="f.zipcode.invalid" class="red">*</span><span class="check" *ngIf="f.zipcode.valid && !f.zipcode.invalid"><i class="fas fa-check"></i></span></label>
+                <input type="text" formControlName="zipcode" name="zipcode">
+            </div>
+    
+            <div class="input-container">
+                <label for="city">By <span *ngIf="f.city.invalid" class="red">*</span><span class="check" *ngIf="f.city.valid && !f.city.invalid"><i class="fas fa-check"></i></span></label>
+                <input type="text" formControlName="city" name="city">
+            </div>
+    
+            <div class="input-container">
+    
+                <label for="phone">Telefon <span *ngIf="f.phone.invalid" class="red">*</span><span class="check" *ngIf="f.phone.valid && !f.phone.invalid"><i class="fas fa-check"></i></span></label>
+                <input type="text" formControlName="phone" name="phone">
+            </div>
+            <div class="input-container">
+                <label for="run_id">Program <span *ngIf="f.run_id.invalid" class="red">*</span><span class="check" *ngIf="f.run_id.valid && !f.run_id.invalid"><i class="fas fa-check"></i></span></label>
+                <div class="select-container">
+                    <select name="run_id" formControlName="run_id">
+                        <option selected disabled hidden [ngValue]="null" value="">Vælg et program</option>
+                        <option value="1">10 km</option>
+                        <option value="2">5 km</option>
+                        <option value="3">One Mile</option>
+                    </select>
+                </div>
+            </div>
+        </section>
+        <section>
+            <label for="comment">Kommentar</label>
+            <textarea formControlName="comment" name="comment"></textarea>
+            <button type="button" (click)="submit()">TILMELD</button>
+        </section>
+    </form>
 </section>
-
-
-<form method="POST">
-    <label for="name">Navn</label>
-    <input type="text" name="name">
-    <label for="lastname">Efternavn</label>
-    <input type="text" name="lastname">
-    <label for="day">Fødselsdato</label>
-    <select name="day">
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">2</option>
-    </select>
-    <select name="month">
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">2</option>
-    </select>
-    <select name="year">
-        <option value="1998">1998</option>
-        <option value="2">1999</option>
-        <option value="3">2000</option>
-    </select>
-    <label for="gender">Køn</label>
-    <input type="radio" id="male" name="gender" value="male">
-    <label for="male">Mand</label><br>
-    <input type="radio" id="female" name="gender" value="female">
-    <label for="female">Kvinde</label><br>
-    <label for="email">E-mail</label>
-    <input type="email" name="email">
-    <label for="address">Adresse</label>
-    <input type="text" name="address">
-    <label for="postnumber">Postnummer</label>
-    <input type="text" name="postnumber">
-    <label for="city">By</label>
-    <input type="text" name="city">
-    <label for="phone">Telefon</label>
-    <input type="text" name="phone">
-    <label for="lastname">Efternavn</label>
-    <select name="program">
-        <option value="1">One Mile</option>
-        <option value="2">5 km</option>
-        <option value="3">10 km</option>
-    </select>
-    <label for="comment">Kommentar</label>
-    <textarea name="comment"></textarea>
-    <button type="button">TILMELD</button>
-</form>

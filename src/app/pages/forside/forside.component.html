@@ -10,11 +10,16 @@
 
   </section>
   <section class="right">
-    <section *ngIf="http.runs | async as runs">
+    <section class="distancer" *ngIf="http.distancer | async as data">
+      <h2>{{data.title}}</h2>
+      <section [innerHTML]="data.teaser"></section>
+      <button routerLink="/distancer">Besøg siden</button>
+    </section>
+    <section class="runs" *ngIf="http.runs | async as runs">
       <article *ngFor="let run of runs">
         <h2>{{run.title}}</h2>
         <p>{{run.description}}</p>
-        <button type="button">TILMELD {{run.title}}</button>
+        <button (click)="tilmeld(run.id)" type="button">TILMELD {{run.title}}</button>
       </article>
 
     </section>

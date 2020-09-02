@@ -1,0 +1,33 @@
+<article class="widget">
+    <section class="average">
+        <span *ngFor="let star of fullStars" class="star">★</span>
+        <span *ngIf="halfStar" class="star half">★</span>
+    </section> 
+    <form *ngIf="online" [formGroup]="rateform">
+    
+        <section class="rating">
+            <p for='rating'>Vurder løbet i stjerner</p>
+
+            <input type="radio" checked value='0' id='star-0' formControlName='rating' name='rating' />
+          
+            <label for='star-1'>★</label>
+            <input type="radio" value='1' id='star-1' formControlName='rating' name='rating' />
+          
+            <label for='star-2'>★</label>
+            <input type="radio" value='2' id='star-2' formControlName='rating' name='rating' />
+          
+            <label for='star-3'>★</label>
+            <input type="radio" value='3' id='star-3' formControlName='rating' name='rating' />
+          
+            <label for='star-4'>★</label>
+            <input type="radio" value='4' id='star-4' formControlName='rating' name='rating' />
+          
+            <label for='star-5'>★</label>
+            <input type="radio" value='5' id='star-5' formControlName='rating' name='rating' />
+        </section>
+        <label for='comment'>Skriv en kommentar</label>
+        <textarea formControlName='comment' name="comment" id="comment"></textarea>
+        <button (click)="submit()">Send din anmeldelse</button>
+    
+    </form>
+</article>

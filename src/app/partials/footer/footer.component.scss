@@ -1,0 +1,25 @@
+footer {
+    display: flex;
+    gap: 3rem;
+    justify-content: flex-end;
+    width: 85%;
+    padding: 2rem;
+    background: #e4e6ec;
+    ul {
+
+        display: flex;
+        flex-direction: column;
+        li {
+            p.rotate, p.rotated {
+                font-weight: 600;
+                font-size: .75rem;
+            }
+            p.rotate {
+                transform: rotate(-90deg) translate(-25%, -445%);
+            }
+            p.rotated {
+                transform: rotate(-90deg) translate(-15%, -500%);
+            }
+        }
+    }
+}

@@ -13,6 +13,8 @@ import { TakComponent } from './pages/tak/tak.component';
 import { DeltagerlisteComponent } from './pages/deltagerliste/deltagerliste.component';
 import { FejlComponent } from './pages/fejl/fejl.component';
 import { OmComponent } from './pages/om/om.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RatingComponent } from './partials/rating/rating.component';
 
 @NgModule({
   declarations: [
@@ -25,12 +27,15 @@ import { OmComponent } from './pages/om/om.component';
     TakComponent,
     DeltagerlisteComponent,
     FejlComponent,
-    OmComponent
+    OmComponent,
+    RatingComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

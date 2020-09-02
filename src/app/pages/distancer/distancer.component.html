@@ -1,4 +1,40 @@
-<section *ngIf="http.distancer | async as data">
-    <h1>{{data.title}}</h1>
-    <section [innerHTML]="data.content"></section>
+<figure>
+    <img id="headerimg" src="../../../assets/img/COLOURBOX21174823.jpg" alt="">
+</figure>
+<section class="main-wrapper">
+    <span class="breadcrumb"><a routerLink="/">FORSIDE</a> > DISTANCER</span>
+    <section class="distances" *ngIf="http.distancer | async as data">
+        <h1>{{data.title}}</h1>
+        <section [innerHTML]="data.content"></section>
+    </section>
+    <article>
+        <ul *ngIf="http.runs | async as runs">
+            <li *ngFor="let run of runs; let i = index">
+                <button (click)="changeSubject(i+1)" type="button">LÆS MERE OM {{run.title}}</button>
+            </li>
+        </ul>
+
+        <section class="context">
+            <article *ngIf="subject">
+                <h2>{{subject.title}}</h2>
+                <p>{{subject.description}}</p>
+                <section>
+                    <p *ngIf="average">{{average}}</p>
+                    <app-rating [rid]="subject.id" [average]="average"></app-rating>
+                    <div class="ratings-container">
+
+                        <article *ngFor="let rating of ratings">
+                            <p>
+                                {{rating.id}}
+                                {{rating.user_id}}
+                                {{rating.num_stars}}
+                                {{rating.comment}}
+                                <span *ngIf="+rating.user_id === uid" (click)="deleteRating(subject.id, $event)" class="material-icons">close</span>
+                            </p>
+                        </article>
+                    </div>
+                </section>
+            </article>
+        </section>
+    </article>
 </section>

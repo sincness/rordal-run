@@ -13,22 +13,28 @@
         <li><a routerLink="/om" (click)="close()">OM RØRDAL RUN</a></li>
         <li><a routerLink="/tilmelding" (click)="close()">TILMELDING</a></li>
         <li><a routerLink="/distancer" (click)="close()">DISTANCER</a></li>
-        <li>
+        <li><a routerLink="/deltagerliste" (click)="close()">DELTAGERLISTE</a></li>
+        <li *ngIf="!online">
             <details>
               <summary>
                   LOG IND
               </summary>
-              <form method="POST">
-                  <input type="text" />
-                  <input type="text" />
-                  <button>Log ind</button>
+              <form [formGroup]="login" (ngSubmit)="submit()" method="POST">
+                <div class="input-container">
+                  <label for="username">Brugernavn <span *ngIf="form.username.invalid" class="red">*</span><span class="check" *ngIf="form.username.valid && !form.username.invalid"><i class="fas fa-check"></i></span></label>
+                  <input type="text" formControlName="username" name="username" />
+                </div>
+                <div class="input-container">
+                  <label for="password">Adgangskode <span *ngIf="form.password.invalid" class="red">*</span><span class="check" *ngIf="form.password.valid && !form.username.invalid"><i class="fas fa-check"></i></span></label>
+                  <input type="password" formControlName="password" name="password" />
+                </div>
+                  <button type="submit" class="cta">Log ind</button>
               </form>
           </details>
         </li>
-        <li><a routerLink="/deltagerliste" (click)="close()">DELTAGERLISTE</a></li>
         <!-- <li *ngIf="!online"><a routerLink="/login" (click)="close()">Log ind</a></li>
-        <li *ngIf="online"><a routerLink="/min-side" (click)="close()">Min side</a></li>
-        <li *ngIf="online"><a (click)="logout();close()">Log ud</a></li> -->
+        <li *ngIf="online"><a routerLink="/min-side" (click)="close()">Min side</a></li> -->
+        <li *ngIf="online"><a (click)="logout();close()">LOG UD</a></li>
     </ul>
   </nav>
 </aside>

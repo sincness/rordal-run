@@ -1,0 +1,56 @@
+figure {
+    img#headerimg {
+      object-position: bottom;
+    }
+  }
+  
+  section.wrapper {
+    display: grid;
+    width: 90%;
+    margin: 0 auto;
+    gap: 1rem;
+    section.content {
+      
+      h1 {
+        font-size: 3.6rem;
+      }
+      section {
+
+        p {
+          padding-bottom: 1rem;
+          
+        }
+      }
+
+      
+
+    }
+    form.search {
+
+      input {
+
+        padding: 0.5rem 0.4rem;
+        margin-right: .5rem;
+        width: 24rem;
+      }
+    }
+    section.sort {
+      display: flex;
+      gap: 1rem;
+    }
+    section.registrations {
+
+      article {
+        border-radius: 3px;
+        padding: 1rem;
+        &:nth-child(odd) {
+          background: #fafafa90;
+        }
+        &:nth-child(even) {
+          background: #2447bc5b;
+        }
+
+      }
+    }
+}
+  

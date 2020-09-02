@@ -1,0 +1,60 @@
+figure {
+    img#headerimg {
+      object-position: center;
+
+    }
+  }
+  
+section.wrapper {
+    padding: 1rem 5%;
+
+section.signup {
+    margin-top: 1rem;
+    h1 {
+        font-size: 4rem;
+    }
+}
+
+form.order {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    section {
+        &:last-child {
+            display: flex;
+            flex-direction: column;
+            textarea {
+                height: 100%;
+                margin-bottom: 1.5rem;
+            }
+            button {
+                width: 10rem;
+            }
+        }
+        div.input-container {
+            display: flex;
+            flex-direction: column;
+            div.select-container {
+                display: flex;
+                gap: 1rem;
+            }
+            div.radio-container {
+                display: flex;
+                gap: .5rem;
+                align-items: center;
+            }
+        }
+    }
+}
+label {
+    font-weight: 600;
+    padding: 0.5rem 0;
+}
+input, select, textarea {
+    padding: 0.5rem 0.4rem;
+    margin-right: 0.5rem;
+    border: #8c8c8c 1px solid;
+    border-radius: 3px;
+}
+
+}

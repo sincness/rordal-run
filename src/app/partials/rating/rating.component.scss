@@ -1,0 +1,51 @@
+article.widget {
+
+    section.average {
+        position: relative;
+        span {
+            display: none;
+            &.star {
+                color: orange;
+                display: inline;
+            }
+
+            &.half {
+                width: 2%;
+                // width: 1%;
+                // transform: translateY(4px);
+                display: inline-block;
+                overflow: hidden;
+            }
+        }
+
+    }
+
+
+
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 20rem;
+    section.rating {
+        input {
+          display: none;
+          &:checked {
+            & ~ label {
+              color: #aaa;
+            }
+          }
+        }
+      
+        label {
+          color: orange;
+          font-size: 2rem;
+        }
+      }
+    textarea {
+        padding: .4rem .5rem;
+    }
+}
+  
