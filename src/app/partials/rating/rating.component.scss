@@ -1,4 +1,14 @@
+$unchecked-star: '\2606';
+$unchecked-color: #888;
+$checked-star: '\2605';
+$checked-color: orange;
+
+
 article.widget {
+
+  h2 {
+    display: block;
+  }
 
     section.average {
         position: relative;
@@ -10,9 +20,9 @@ article.widget {
             }
 
             &.half {
-                width: 2%;
-                // width: 1%;
-                // transform: translateY(4px);
+                // width: 2%;
+                width: 1%;
+                transform: translateY(4px);
                 display: inline-block;
                 overflow: hidden;
             }
@@ -30,19 +40,86 @@ form {
     gap: 1rem;
     width: 20rem;
     section.rating {
-        input {
-          display: none;
-          &:checked {
-            & ~ label {
-              color: #aaa;
-            }
-          }
-        }
+        // input {
+        //   display: none;
+        //   &:checked {
+        //     & ~ label {
+        //       color: #aaa;
+        //     }
+        //   }
+        // }
       
-        label {
-          color: orange;
-          font-size: 2rem;
-        }
+        // label {
+        //   color: orange;
+        //   font-size: 2rem;
+        // }
+        .star-cb-group {
+          /* remove inline-block whitespace */
+          font-size: 0;
+      
+          * {
+              font-size: 2rem;
+          }
+      
+          /* flip the order so we can use the + and ~ combinators */
+          unicode-bidi: bidi-override;
+          direction: rtl;
+      
+          &>input {
+              display: none;
+      
+              &+label {
+                  /* only enough room for the star */
+                  display: inline-block;
+                  overflow: hidden;
+                  text-indent: 9999px;
+                  width: 1em;
+                  white-space: nowrap;
+                  cursor: pointer;
+      
+                  &:before {
+                      display: inline-block;
+                      text-indent: -9999px;
+                      content: $unchecked-star;
+                      color: $unchecked-color;
+                  }
+              }
+      
+              &:checked~label:before,
+              &+label:hover~label:before,
+              &+label:hover:before {
+                  content: $checked-star;
+                  color: orange;
+                  text-shadow: 0 0 1px #333;
+              }
+          }
+      
+          /* the hidden clearer */
+          &>.star-cb-clear+label {
+              text-indent: -9999px;
+              width: .5em;
+          }
+      
+          &>.star-cb-clear+label:before {
+              width: .5em;
+          }
+      
+          &:hover>input+label:before {
+              content: $unchecked-star;
+              color: $unchecked-color;
+              text-shadow: none;
+          }
+      
+          &:hover>input+label:hover~label:before,
+          &:hover>input+label:hover:before {
+              content: $checked-star;
+              color: $checked-color;
+              text-shadow: 0 0 1px #333;
+          }
+      }
+      
+      
+      
       }
     textarea {
         padding: .4rem .5rem;

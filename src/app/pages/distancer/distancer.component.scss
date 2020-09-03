@@ -23,10 +23,16 @@ section.main-wrapper {
         ul {
             display: flex;
             gap: 1rem;
+            @media (max-width: 580px) {
+                flex-direction: column;
+            }
 
             li {
                 button {
                     margin-bottom: 1rem;
+                    @media (max-width: 580px) {
+                        width: 100%;
+                    }
                     &.red{
                         background-color: #cb2525;
                     }
@@ -43,16 +49,19 @@ section.main-wrapper {
                 
                 p {
                     max-width: 40rem;
+                    padding-bottom: 2rem;
                 }
                 section {
-                    display: flex;
+                    // display: flex;
                     div.ratings-container {
                         display: flex;
                         flex-direction: column;
                         margin-left: 1rem;
                         article {
+                            position: relative;
                             border-radius: 3px;
                             padding: 1rem;
+                            margin: 1rem 0;
                             &:nth-child(odd) {
                               background: #fafafa90;
                             }
@@ -62,12 +71,13 @@ section.main-wrapper {
                             p {
                                 display: flex;
                                 align-items: center;
-                                span {
+                                span.material-icons {
                                     cursor: pointer;
-                                    font-size: 1.2rem;
-                                    display: inline-block;
+                                    font-size: 3rem;
                                     color: #cb2525;
-                                    // display: inline-block;
+                                    position: absolute;
+                                    right: 2%;
+                                    top: 20%;
                                 }
                             }
 

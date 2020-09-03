@@ -100,7 +100,8 @@
   right: 0;
   background-color: #2448bc;
   opacity: .98; // Kan slåes fra, altså ikke nødvendig
-  overflow-x: hidden;
+  // overflow-x: hidden;
+  overflow: hidden;
   padding-top: 1rem;
   transition: .5s;
   span.material-icons {

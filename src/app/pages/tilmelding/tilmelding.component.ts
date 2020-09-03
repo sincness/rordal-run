@@ -27,7 +27,7 @@ export class TilmeldingComponent implements OnInit {
       break;
       
       default:
-          this.router.navigateByUrl('/');
+          this.router.navigateByUrl('/fejl');
         break;
     } 
     this.signup = this.fb.group({

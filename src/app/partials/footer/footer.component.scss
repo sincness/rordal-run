@@ -1,18 +1,30 @@
 footer {
+    margin-top: 2rem;
     display: flex;
     gap: 3rem;
     justify-content: flex-end;
     width: 85%;
     padding: 2rem;
     background: #e4e6ec;
+
+    @media (max-width: 600px) {
+        flex-direction: column;
+    }
+
     ul {
 
         display: flex;
         flex-direction: column;
+        
         li {
             p.rotate, p.rotated {
                 font-weight: 600;
                 font-size: .75rem;
+            }
+            p.rotate, p.rotated {
+                @media (max-width: 600px) {
+                    transform: unset !important;
+                }
             }
             p.rotate {
                 transform: rotate(-90deg) translate(-25%, -445%);

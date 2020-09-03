@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, HostListener } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -14,7 +14,7 @@ export class NavComponent implements OnInit {
   @ViewChild('toolbar') toolbar;
   @ViewChild('sideToolbar') sideToolbar;
   @ViewChild('icon') icon;
-
+  width = window.innerWidth;
   menuOpen: boolean;
   online: boolean = this.cookie.get('token') ? true : false
   login: FormGroup;
@@ -25,6 +25,7 @@ export class NavComponent implements OnInit {
 
   ngOnInit(): void {
 
+    console.log(this.width);
     if (this.auth.currentUserValue) this.online = true;
     
 
@@ -37,13 +38,45 @@ export class NavComponent implements OnInit {
     this.returnUrl = this.route.snapshot.queryParams.returnUrl || '/';
   }
 
+  ngOnChanges() {
+    
+  }
+
+
   menu() {
     (this.menuOpen) ? this.open() : this.close();
   }
 
   open() {
+
+    switch(true) {
+
+      case this.width < 600:
+        this.sideToolbar.nativeElement.style.width = '60%';
+      break;
+      
+      case this.width < 800:
+        this.sideToolbar.nativeElement.style.width = '50%';
+      break;
+
+      case this.width < 1000:
+        this.sideToolbar.nativeElement.style.width = '40%';
+      break;
+
+      case this.width < 1200:
+        this.sideToolbar.nativeElement.style.width = '30%';
+      break;
+
+      default:
+        this.sideToolbar.nativeElement.style.width = '15%';
+
+      break;
+
+
+    }
+
     // this.toolbar.nativeElement.style.marginLeft = '250px';
-    this.sideToolbar.nativeElement.style.width = '15%';
+
     // this.icon.nativeElement.textContent = 'menu_open';
   }
 
@@ -81,4 +114,11 @@ export class NavComponent implements OnInit {
   logout() {
     this.auth.logout();
   }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event) {
+    this.width = window.innerWidth;
+    
+  }
+
 }

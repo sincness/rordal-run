@@ -19,18 +19,20 @@
                 <h2>{{subject.title}}</h2>
                 <p>{{subject.description}}</p>
                 <section>
-                    <p *ngIf="average">{{average}}</p>
                     <app-rating [rid]="subject.id" [average]="average"></app-rating>
                     <div class="ratings-container">
 
                         <article *ngFor="let rating of ratings">
                             <p>
-                                {{rating.id}}
-                                {{rating.user_id}}
                                 {{rating.num_stars}}
-                                {{rating.comment}}
+                                <span *ngIf="rating.num_stars === '1'">★</span>
+                                <span *ngIf="rating.num_stars === '2'">★★</span>
+                                <span *ngIf="rating.num_stars === '3'">★★★</span>
+                                <span *ngIf="rating.num_stars === '4'">★★★★</span>
+                                <span *ngIf="rating.num_stars === '5'">★★★★★</span>
                                 <span *ngIf="+rating.user_id === uid" (click)="deleteRating(subject.id, $event)" class="material-icons">close</span>
                             </p>
+                            <p>{{rating.comment}}</p>
                         </article>
                     </div>
                 </section>

@@ -1,14 +1,25 @@
 <article class="widget">
-    <section class="average">
-        <span *ngFor="let star of fullStars" class="star">★</span>
-        <span *ngIf="halfStar" class="star half">★</span>
+    <h2 *ngIf="fullStars && average">Antal stjerner i gennemsnit</h2>
+    <section *ngIf="fullStars" class="average">
+        <p *ngIf="average">{{average}}<span *ngFor="let star of fullStars" class="star">★</span><span *ngIf="halfStar" class="star half">★</span></p>
+        
+        
     </section> 
     <form *ngIf="online" [formGroup]="rateform">
     
         <section class="rating">
             <p for='rating'>Vurder løbet i stjerner</p>
 
-            <input type="radio" checked value='0' id='star-0' formControlName='rating' name='rating' />
+            <span class="star-cb-group">
+                <input type="radio" id="rating-5" formControlName="rating" value="5" /><label for="rating-5">5</label>
+                <input type="radio" id="rating-4" formControlName="rating" value="4" /><label for="rating-4">4</label>
+                <input type="radio" id="rating-3" formControlName="rating" value="3" /><label for="rating-3">3</label>
+                <input type="radio" id="rating-2" formControlName="rating" value="2" /><label for="rating-2">2</label>
+                <input type="radio" id="rating-1" formControlName="rating" value="1" /><label for="rating-1">1</label>
+
+            </span>
+
+            <!-- <input type="radio" value='0' id='star-0' formControlName='rating' name='rating' />
           
             <label for='star-1'>★</label>
             <input type="radio" value='1' id='star-1' formControlName='rating' name='rating' />
@@ -23,7 +34,7 @@
             <input type="radio" value='4' id='star-4' formControlName='rating' name='rating' />
           
             <label for='star-5'>★</label>
-            <input type="radio" value='5' id='star-5' formControlName='rating' name='rating' />
+            <input type="radio" value='5' id='star-5' formControlName='rating' name='rating' /> -->
         </section>
         <label for='comment'>Skriv en kommentar</label>
         <textarea formControlName='comment' name="comment" id="comment"></textarea>

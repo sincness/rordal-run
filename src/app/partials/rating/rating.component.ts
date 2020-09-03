@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { CookieService } from 'src/app/services/cookie.service';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
@@ -18,6 +18,7 @@ export class RatingComponent implements OnInit {
 
   @Input('rid') rid;
   @Input('average') average;
+  @ViewChild('input') input;
   fullStars;
   halfStar: boolean;
   online = this.cookie.get('token');
@@ -25,12 +26,14 @@ export class RatingComponent implements OnInit {
 
   ngOnInit(): void {
     this.rateform = this.fb.group({
-      rating: ['', Validators.required],
+      rating: [],
       comment: ['', Validators.required]
     })
     
     // this.halfStar = this.average % 1 !== 0;  
     // this.fullStars = Array(Math.floor(this.average));
+
+
   }
   submit() {
     console.log(this.rateform.value);
@@ -64,6 +67,7 @@ export class RatingComponent implements OnInit {
       this.halfStar = this.average % 1 !== 0;
       this.fullStars = Array(Math.floor(+this.average));
     }
+
   }
 
 
