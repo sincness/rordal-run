@@ -13,6 +13,7 @@ export class DeltagerlisteComponent implements OnInit {
   list;
 
   idState = false;
+  lastnameState = true;
   nameState = true;
   cityState = true;
 
@@ -23,6 +24,7 @@ export class DeltagerlisteComponent implements OnInit {
       keyword: ['']
     })
     this.list = await this.http.registrations.toPromise();
+    
   }
 
   async search() {
@@ -35,14 +37,20 @@ export class DeltagerlisteComponent implements OnInit {
     // if (!this.cityState) this.cityState = true;
     // if(!this.nameState) this.nameState = true;
   }
-  sortNames() {
-    this.nameState ? this.list.sort((a, b) => (a.firstname > b.firstname) ? 1 : ((b.firstname > a.firstname) ? -1 : 0)) : this.reverse();
+  sortFirstnames() {
+    this.nameState ? this.list.sort((a, b) => (a.firstname.toUpperCase() > b.firstname.toUpperCase()) ? 1 : ((b.firstname.toUpperCase() > a.firstname.toUpperCase()) ? -1 : 0)) : this.reverse();
     this.nameState = this.nameState ? false : true;
     // if (!this.cityState) this.cityState = true;
     // if(!this.idState) this.idState = true;
   }
+  sortLastnames() {
+    this.lastnameState ? this.list.sort((a, b) => (a.lastname.toUpperCase() > b.lastname.toUpperCase()) ? 1 : ((b.lastname.toUpperCase() > a.lastname.toUpperCase()) ? -1 : 0)) : this.reverse();
+    this.lastnameState = this.lastnameState ? false : true;
+    // if (!this.cityState) this.cityState = true;
+    // if(!this.idState) this.idState = true;
+  }
   sortCities() {
-    this.cityState ? this.list.sort((a, b) => (a.city > b.city) ? 1 : ((b.city > a.city) ? -1 : 0)) : this.reverse();
+    this.cityState ? this.list.sort((a, b) => (a.city.toUpperCase() > b.city.toUpperCase()) ? 1 : ((b.city.toUpperCase() > a.city.toUpperCase()) ? -1 : 0)) : this.reverse();
     this.cityState = this.cityState ? false : true;
     // if (!this.idState) this.idState = true;
     // if(!this.nameState) this.nameState = true;

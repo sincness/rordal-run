@@ -68,7 +68,7 @@ export class NavComponent implements OnInit {
       break;
 
       default:
-        this.sideToolbar.nativeElement.style.width = '15%';
+        this.sideToolbar.nativeElement.style.width = '20%';
 
       break;
 
@@ -102,7 +102,12 @@ export class NavComponent implements OnInit {
           },
           error => {
               console.log(error);
-              this.error = error.statusText;
+              if (error.statusText === 'Unauthorized') {
+                this.error = 'Forkerte oplysninger';
+                this.login.reset();
+              }
+              // this.error = error.statusText;
+              console.log(this.error);
               setTimeout(() => {
                   this.error = '';
               }, 2000);

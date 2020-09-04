@@ -26,7 +26,7 @@ export class RatingComponent implements OnInit {
 
   ngOnInit(): void {
     this.rateform = this.fb.group({
-      rating: [],
+      rating: ['', Validators.required],
       comment: ['', Validators.required]
     })
     
@@ -35,6 +35,11 @@ export class RatingComponent implements OnInit {
 
 
   }
+
+  get data() {
+    return this.rateform.controls;
+  }
+
   submit() {
     console.log(this.rateform.value);
     if (this.rateform.valid) {

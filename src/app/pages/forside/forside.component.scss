@@ -7,7 +7,7 @@ figure {
 section.container {
   display: grid;
   grid-template-columns: 1fr 60%;
-  width: 90%;
+  width: 80%;
   margin: 0 auto;
   gap: 2rem;
   @media (max-width: 1400px) {
@@ -20,16 +20,16 @@ section.container {
         h1 {
           font-size: 3.1rem;
           white-space: pre;
-          @media (max-width: 580px) {
+          @media (max-width: 630px) {
             font-size: 2rem;
           }
         }
         section {
 
           p {
-              // @media (max-width: 1400px) {
-              //   width: 50%;
-              // }
+              @media (max-width: 1400px) {
+                width: 80%;
+              }
             padding-bottom: 1rem;
             text-align: justify;
           }
@@ -56,14 +56,10 @@ section.container {
           @media (max-width: 880px) {
               grid-template-columns: 1fr 1fr;
           }
-          @media (max-width: 580px) {
+          @media (max-width: 630px) {
               grid-template-columns: 1fr;
           }
         article {
-
-          h2 {
-
-          }
             p {
               white-space: nowrap;
               height: 2rem;
@@ -71,9 +67,6 @@ section.container {
               text-overflow: ellipsis;
               overflow: hidden;
             }
-          button {
-
-          }
         }
       }
     }

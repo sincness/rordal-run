@@ -2,33 +2,20 @@
 #toolbar {
   user-select: none;
   height: 100%;
-  width: 15%;
+  width: 20%;
   position: fixed;
   z-index: 6;
   top: 0;
   right: 0;
   background-color: #2448bc;
   // opacity: .98; // Kan slåes fra, altså ikke nødvendig
-  overflow-x: hidden;
+  overflow: hidden;
   padding-top: 1rem;
   transition: .5s;
   display: flex;
-  // justify-content: center;
   flex-direction: column;
-  // background-color: #e2e2e2;
-  // display: flex;
-  // justify-content: space-between;
-  // align-items: center;
-  // padding: 30px 10%;
-  // box-shadow: 0 0 10px 0 rgba(0, 0, 0, .16);
-  // transition: margin-left .5s;
-  // height: 60px;
-  // min-width: 100vw;
-  // position: relative;
-  // z-index: 2;
 
   span.material-icons {
-      // margin-right: 1rem;
       font-size: 2rem;
       color: #f0f0f0;
       padding-right: .5rem;
@@ -44,7 +31,7 @@
     cursor: pointer;
 
     img {
-      width: 10rem;
+      width: 40%;
     }
   }
 
@@ -100,7 +87,6 @@
   right: 0;
   background-color: #2448bc;
   opacity: .98; // Kan slåes fra, altså ikke nødvendig
-  // overflow-x: hidden;
   overflow: hidden;
   padding-top: 1rem;
   transition: .5s;

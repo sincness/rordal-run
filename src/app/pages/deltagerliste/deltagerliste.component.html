@@ -13,15 +13,34 @@
       </form>
       <section class="sort">
         <button (click)="sortId()">Sorter ud fra id</button>
-        <button (click)="sortNames()">Sorter ud fra navne</button>
+        <button (click)="sortFirstnames()">Sorter ud fra fornavne</button>
+        <button (click)="sortLastnames()">Sorter ud fra efternavne</button>
         <button (click)="sortCities()">Sorter ud fra byer</button>
         <!-- <button (click)="reverse()">Vend rækkefølgen om</button> -->
       </section>
       <section class="registrations" *ngIf="http.registrations">
+        <section class="items">
+          <span>Id</span>
+          <span>Fornavn</span>
+          <span>Efternavn</span>
+          <span>Adresse</span>
+          <span>By</span>
+          <span>Postnummer</span>
+          <span>Email</span>
+        </section>
         <article *ngFor="let item of list">
-          <h2>{{item.firstname}} {{item.lastname}}, {{item.id}}</h2>
-          <p>{{item.address}}, {{item.city}} {{item.zipcode}}</p>
-          <p>{{item.phone}} {{item.email}}</p>
+          <p class="desktop">{{item.id}}</p>
+          <p class="desktop">{{item.firstname}}</p>
+          <p class="desktop">{{item.lastname}}</p>
+          <p class="desktop">{{item.address}}</p>
+          <p class="desktop">{{item.city}}</p>
+          <p class="desktop">{{item.zipcode}}</p>
+          <p class="desktop">{{item.email}}</p>
+          <section class="mobile">
+            <h2>{{item.id}} {{item.firstname}}, {{item.lastname}}</h2>
+            <p>{{item.address}}, {{item.city}} {{item.zipcode}}</p>
+            <p>{{item.email}}</p>
+          </section>
         </article>
       </section>
       <!-- <section class="registrations" *ngIf="http.registrations | async as registrations">

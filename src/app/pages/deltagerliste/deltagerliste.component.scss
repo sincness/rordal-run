@@ -45,16 +45,55 @@ figure {
     }
     }
     section.registrations {
+      section.items {
+        border-radius: 3px;
+        background-color: #2447bc;
+        color: #fff;
+        padding: 1rem;
+        margin-bottom: 1rem;
+        display: flex;
+        justify-content: space-around;
+        @media (max-width: 780px) {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: .5rem;
+        }
+      }
 
       article {
+        // display: flex;
+        // justify-content: space-around;
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
         border-radius: 3px;
         padding: 1rem;
+        margin-bottom: 1rem;
+        @media (max-width: 780px) {
+          display: flex;
+        }
+
+        p.desktop {
+          text-align:center;
+          @media (max-width: 780px) {
+            display: none;
+          }
+        }
+        section.mobile {
+          display: none;
+          @media (max-width: 780px) {
+            display: block;
+          }
+        }
+
         &:nth-child(odd) {
-          background: #fafafa90;
+          background: #2447bc21;
         }
         &:nth-child(even) {
           background: #2447bc5b;
         }
+
+
+        
 
       }
     }

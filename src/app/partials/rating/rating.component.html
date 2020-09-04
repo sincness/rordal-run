@@ -8,7 +8,8 @@
     <form *ngIf="online" [formGroup]="rateform">
     
         <section class="rating">
-            <p for='rating'>Vurder løbet i stjerner</p>
+            <h2>Giv os din vurdering</h2><br>
+            <p for='rating'>Vurder løbet i stjerner <span *ngIf="data.rating.invalid" class="red">*</span><span class="check" *ngIf="data.rating.valid && !data.rating.invalid"><i class="fas fa-check"></i></span></p>
 
             <span class="star-cb-group">
                 <input type="radio" id="rating-5" formControlName="rating" value="5" /><label for="rating-5">5</label>
@@ -36,9 +37,9 @@
             <label for='star-5'>★</label>
             <input type="radio" value='5' id='star-5' formControlName='rating' name='rating' /> -->
         </section>
-        <label for='comment'>Skriv en kommentar</label>
+        <label for='comment'>Skriv en kommentar <span *ngIf="data.comment.invalid" class="red">*</span><span class="check" *ngIf="data.comment.valid && !data.comment.invalid"><i class="fas fa-check"></i></span></label>
         <textarea formControlName='comment' name="comment" id="comment"></textarea>
-        <button (click)="submit()">Send din anmeldelse</button>
+        <button [disabled]="!rateform.valid" (click)="submit()">Send din anmeldelse <span *ngIf="!rateform.valid" class="tooltip">Skriv en anmeldelse først</span></button>
     
     </form>
 </article>

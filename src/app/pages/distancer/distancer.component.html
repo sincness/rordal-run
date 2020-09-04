@@ -23,16 +23,22 @@
                     <div class="ratings-container">
 
                         <article *ngFor="let rating of ratings">
-                            <p>
-                                {{rating.num_stars}}
-                                <span *ngIf="rating.num_stars === '1'">★</span>
-                                <span *ngIf="rating.num_stars === '2'">★★</span>
-                                <span *ngIf="rating.num_stars === '3'">★★★</span>
-                                <span *ngIf="rating.num_stars === '4'">★★★★</span>
-                                <span *ngIf="rating.num_stars === '5'">★★★★★</span>
-                                <span *ngIf="+rating.user_id === uid" (click)="deleteRating(subject.id, $event)" class="material-icons">close</span>
-                            </p>
-                            <p>{{rating.comment}}</p>
+                            <section class="first">
+                                <h3 *ngIf="+rating.user_id !== uid">Anmeldelse</h3>
+                                <h3 *ngIf="+rating.user_id === uid">Din anmeldelse</h3>
+                                <p> {{rating.num_stars}} 
+                                    <span *ngIf="rating.num_stars === '1'">★</span>
+                                    <span *ngIf="rating.num_stars === '2'">★★</span>
+                                    <span *ngIf="rating.num_stars === '3'">★★★</span>
+                                    <span *ngIf="rating.num_stars === '4'">★★★★</span>
+                                    <span *ngIf="rating.num_stars === '5'">★★★★★</span>
+                                </p>
+                            </section>
+                            <section class="second">
+                                <h4>Kommentar</h4>
+                                <p>{{rating.comment}}</p>
+                            </section>
+                            <span *ngIf="+rating.user_id === uid" (click)="deleteRating(subject.id, $event)" class="material-icons">close <span class="tooltip">Slet anmeldelsen</span></span>
                         </article>
                     </div>
                 </section>

@@ -40,19 +40,7 @@ form {
     gap: 1rem;
     width: 20rem;
     section.rating {
-        // input {
-        //   display: none;
-        //   &:checked {
-        //     & ~ label {
-        //       color: #aaa;
-        //     }
-        //   }
-        // }
-      
-        // label {
-        //   color: orange;
-        //   font-size: 2rem;
-        // }
+
         .star-cb-group {
           /* remove inline-block whitespace */
           font-size: 0;
@@ -124,5 +112,38 @@ form {
     textarea {
         padding: .4rem .5rem;
     }
+    button {
+        position: relative;
+        &:disabled {
+            opacity: .85;
+        }
+        span.tooltip {
+                                   
+            visibility: hidden;
+            opacity: 0;
+            width: 200px;
+            background-color: black;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px 0;
+            font-size: .8rem;
+          
+            /* Position the tooltip */
+            position: absolute;
+            top: -100%;
+            right: 0;
+            z-index: 10;
+          }
+          &:hover span.tooltip {
+              visibility: visible;
+              animation: fadeIn 200ms ease-in-out forwards; 
+          }
+    }
 }
-  
+
+
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+   }

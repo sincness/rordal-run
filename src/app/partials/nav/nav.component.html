@@ -32,6 +32,7 @@
               </form>
           </details>
         </li>
+        <span class="red" *ngIf="error">{{error}}</span>
         <!-- <li *ngIf="!online"><a routerLink="/login" (click)="close()">Log ind</a></li>
         <li *ngIf="online"><a routerLink="/min-side" (click)="close()">Min side</a></li> -->
         <li *ngIf="online"><a (click)="logout();close()">LOG UD</a></li>
